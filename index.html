@@ -4964,7 +4964,7 @@ async function boot(){requestAnimationFrame(loop);
  if(!await moveNotice())await inAppWarn();
  const sv=loadSave();
  const btns=sv?[{label:'繼續旅程'},{label:'重新開始',ghost:true}]:[{label:'開始遊戲'}];
- const i=await overlay(`<div class="logo">物理旅人</div><div class="sub">學測版・淡水篇</div><p>你是時空修復師。淡水的物理定律正在崩壞：<br>東西分不清大小、捷運停不準、原子散了一地、光變得一顆一顆的。<br>從老街出發，六個篇章，把定律一章一章修回來。</p><p class="dnote">存檔在這支手機／瀏覽器裡：<span class="gold">超過 7 天沒玩，存檔可能被自動清掉</span>，請每週至少開一次。</p>`,btns);
+ const i=await overlay(`<div class="logo">物理旅人</div><div class="sub">學測版・淡水篇</div><p>你是時空修復師。淡水的物理定律正在崩壞：<br>東西分不清大小、捷運停不準、原子散了一地、光變得一顆一顆的。<br>從老街出發，六個篇章，把定律一章一章修回來。</p><p style="font-size:max(16px,calc(var(--u)*7))">⚠ 存檔在這支手機／瀏覽器裡：<span class="gold">超過 7 天沒玩，存檔可能被自動清掉</span>，請每週至少開一次。</p>`,btns);
  if(sv&&i===0){Object.assign(S,{hearts:sv.hearts??5,cards:sv.cards??1,got:sv.got||{},codex:sv.codex||{},q:Object.fromEntries(Object.entries(sv.q||{}).filter(([,v])=>v)),side:sv.side||{},chDone:sv.chDone||{},teacher:!!sv.teacher,diff:DIFFS[sv.diff]?sv.diff:'normal'});S.maxHearts=DIFFS[S.diff].hearts;S.hearts=clamp(S.hearts,1,S.maxHearts);
   S.started=true;updateHUD();
   const c=sv.chapter&&chById(sv.chapter);
